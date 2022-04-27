@@ -1,11 +1,13 @@
 import React from 'react';
 import {
   Box,
-  Text,
+  Show,
   Link,
-  VStack,
-  Code,
-  Grid,
+  MenuItem,
+  Menu,
+  MenuButton,
+  MenuList,
+  IconButton,
   Container,
   Stack,
   useColorModeValue,
@@ -13,15 +15,18 @@ import {
   Spacer,
 } from '@chakra-ui/react';
 import ThemeToggleButton from './ThemeToggleButton';
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 function App() {
+  const navbarBg = useColorModeValue('#DDDDDD', '#303030');
+
   return (
     <Box h="100vh" w="100%">
-      <Box as="nav" py={2} pos="fixed" w="100%">
+      <Box px={5} as="nav" py={2} pos="fixed" w="100%">
         <Container
           display="flex"
           p={2}
-          maxW="container.md"
+          maxW="1000px"
           wrap="wrap"
           align="center"
           justify="space-between"
@@ -33,7 +38,7 @@ function App() {
             justify="center"
             borderRadius="md"
             overflow="hidden"
-            bg={'#DDDDDD'}
+            bg={navbarBg}
           >
             <svg
               width="99.2"
@@ -64,28 +69,34 @@ function App() {
 
           <Spacer />
 
-          <Stack
-            py={2}
-            px={5}
-            spacing={5}
-            direction="row"
-            borderRadius="md"
-            pos="relative"
-            bg={'#DDDDDD'}
-          >
-            <Link fontFamily="Pacifico" fontSize={25}>
-              Home
-            </Link>
-            <Link fontFamily="Pacifico" fontSize={25}>
-              Projects
-            </Link>
-            <Link fontFamily="Pacifico" fontSize={25}>
-              Technology
-            </Link>
-            <Link fontFamily="Pacifico" fontSize={25}>
-              About
-            </Link>
-          </Stack>
+          <Show breakpoint="(min-width: 701px)">
+            <Stack
+              py={2}
+              px={5}
+              spacing={5}
+              direction="row"
+              borderRadius="md"
+              pos="relative"
+              bg={navbarBg}
+              display="flex"
+              align="center"
+              justify="center"
+              minW="50%"
+            >
+              <Link fontFamily="Pacifico" fontSize={25}>
+                Home
+              </Link>
+              <Link fontFamily="Pacifico" fontSize={25}>
+                Projects
+              </Link>
+              <Link fontFamily="Pacifico" fontSize={25}>
+                Technology
+              </Link>
+              <Link fontFamily="Pacifico" fontSize={25}>
+                About
+              </Link>
+            </Stack>
+          </Show>
 
           <Spacer />
 
@@ -95,8 +106,31 @@ function App() {
             justify="center"
             borderRadius="md"
             overflow="hidden"
-            bg={'#DDDDDD'}
+            bg={navbarBg}
+            minW="90px "
           >
+            <Show breakpoint="(max-width: 700px)">
+              <Box
+                borderRadius="md"
+                mr={2}
+                display={{ base: 'inline-block', md: 'none' }}
+              >
+                <Menu isLazy id="navbar-menu">
+                  <MenuButton
+                    as={IconButton}
+                    icon={<HamburgerIcon />}
+                    variant="outline"
+                    aria-label="Options"
+                  />
+                  <MenuList>
+                    <MenuItem as={Link}>Home</MenuItem>
+                    <MenuItem as={Link}>Technologies</MenuItem>
+                    <MenuItem as={Link}>About Me</MenuItem>
+                  </MenuList>
+                </Menu>
+              </Box>
+            </Show>
+
             <ThemeToggleButton />
           </Flex>
         </Container>
