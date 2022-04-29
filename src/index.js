@@ -2,10 +2,10 @@ import { ColorModeScript, ChakraProvider } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import * as serviceWorker from './serviceWorker';
-import theme from './theme';
-import Fonts from './Fonts';
+import reportWebVitals from './lib/reportWebVitals';
+import * as serviceWorker from './lib/serviceWorker';
+import theme from './lib/theme';
+import Fonts from './lib/Fonts';
 
 ReactDOM.render(
   <StrictMode>

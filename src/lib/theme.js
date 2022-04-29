@@ -12,7 +12,28 @@ const styles = {
   }),
 };
 
-const components = {};
+const components = {
+  Button: {
+    variants: {
+      primary: props => ({
+        rounded: 'lg',
+        bg: mode('white', 'black')(props),
+        color: mode('black', 'white')(props),
+        letterSpacing: '1.9px',
+        fontSize: '18px',
+        fontFamily: 'Fredoka One',
+        borderColor: mode('black', 'white')(props),
+        borderWidth: '5px',
+        px: 5,
+        py: 6,
+
+        _hover: {
+          bg: mode('blackAlpha.500', 'whiteAlpha.500')(props),
+        },
+      }),
+    },
+  },
+};
 
 const fonts = {};
 
