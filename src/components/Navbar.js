@@ -13,6 +13,7 @@ import {
   useColorModeValue,
   Flex,
   Spacer,
+  Text,
 } from '@chakra-ui/react';
 import ThemeToggleButton from './ThemeToggleButton';
 import { HamburgerIcon } from '@chakra-ui/icons';
@@ -85,15 +86,10 @@ const Navbar = () => {
             <Link fontFamily="Pacifico" fontSize={25}>
               Home
             </Link>
-            <Link fontFamily="Pacifico" fontSize={25}>
-              Projects
-            </Link>
-            <Link fontFamily="Pacifico" fontSize={25}>
-              Technology
-            </Link>
-            <Link fontFamily="Pacifico" fontSize={25}>
-              About
-            </Link>
+            <Spacer />
+            <Text fontFamily="Pacifico" fontSize={15}>
+              More About Me comming soon...
+            </Text>
           </Stack>
         </Show>
 

@@ -33,62 +33,78 @@ import { Icon, IconButton } from '@chakra-ui/react';
 const cat = require('./my-octocat.png');
 
 function App() {
-  const [isNotSmallerScreen] = useMediaQuery('(min-width:600px)');
+  const [isSmallerScreen] = useMediaQuery('(min-width:1500px)');
   return (
     <Box h="100vh" w="100%">
       <Navbar />
-      <Box minW="80%" p={5} h="100vh">
-        <Container>
+      <Container minW="55%">
+        <Flex
+          direction={isSmallerScreen ? 'row' : 'column-reverse'}
+          p={isSmallerScreen ? '16' : '0'}
+          align="center"
+          justify={isSmallerScreen ? 'center' : 'space-between'}
+          h="100vh"
+          w="100%"
+        >
           <Flex
-            direction={isNotSmallerScreen ? 'row' : 'column'}
-            p={isNotSmallerScreen ? '16' : '0'}
-            align="center"
+            align="flex-start"
             justify="center"
+            direction="column"
+            mt={isSmallerScreen ? '0' : 32}
           >
-            <Box mt={isNotSmallerScreen ? '0' : 32}>
-              <Image src={HeyThere} width="100%" height="100%" />
-              <Text fontSize="3xl" fontFamily={'Luckiest Guy'} lineHeight="1.2">
-                Call Me the KidCoderT. <br />
-                And Welcome to my <br />
-                Website
-              </Text>
-              <Button mt={2} variant="primary" rightIcon={<FaDiscord />}>
-                Contact Me
-              </Button>
-              <HStack mt={4}>
-                <IconButton
-                  variant="outline"
-                  as={Link}
-                  href="https://github.com/KidCoderT"
-                  isExternal
-                  icon={<Icon as={DiGithubAlt} w={8} h={8} />}
-                />
-                <IconButton
-                  variant="outline"
-                  as={Link}
-                  href="https://www.linkedin.com/in/tejas-sunil-bb18611b4/"
-                  isExternal
-                  icon={<Icon as={AiOutlineLinkedin} w={6} h={6} />}
-                />
-                <IconButton
-                  variant="outline"
-                  as={Link}
-                  href="https://www.codechef.com/users/kidcodert"
-                  isExternal
-                  icon={<Icon as={SiCodechef} w={5} h={5} />}
-                />
-                <IconButton
-                  variant="outline"
-                  as={Link}
-                  href="https://codeforces.com/profile/KidCoderT"
-                  isExternal
-                  icon={<Icon as={SiCodeforces} w={5} h={5} />}
-                />
-              </HStack>
-            </Box>
+            <Image src={HeyThere} width="100%" height="100%" />
+            <Text fontSize="3xl" fontFamily={'Luckiest Guy'} lineHeight="1.2">
+              Call Me the KidCoderT. <br />
+              And Welcome to my <br />
+              Website
+            </Text>
+            <Button mt={2} variant="primary" rightIcon={<FaDiscord />}>
+              Contact Me
+            </Button>
+            <HStack mt={4}>
+              <IconButton
+                variant="outline"
+                as={Link}
+                href="https://github.com/KidCoderT"
+                isExternal
+                icon={<Icon as={DiGithubAlt} w={8} h={8} />}
+              />
+              <IconButton
+                variant="outline"
+                as={Link}
+                href="https://www.linkedin.com/in/tejas-sunil-bb18611b4/"
+                isExternal
+                icon={<Icon as={AiOutlineLinkedin} w={6} h={6} />}
+              />
+              <IconButton
+                variant="outline"
+                as={Link}
+                href="https://www.codechef.com/users/kidcodert"
+                isExternal
+                icon={<Icon as={SiCodechef} w={5} h={5} />}
+              />
+              <IconButton
+                variant="outline"
+                as={Link}
+                href="https://codeforces.com/profile/KidCoderT"
+                isExternal
+                icon={<Icon as={SiCodeforces} w={5} h={5} />}
+              />
+            </HStack>
           </Flex>
-        </Container>
-      </Box>
+          <Box mb={8}>
+            <Image
+              src={cat}
+              width="192px"
+              pos="absolute"
+              borderRadius="full"
+              ml={10}
+              mt={5}
+            />
+            <Blob />
+          </Box>
+        </Flex>
+      </Container>
     </Box>
   );
 }
